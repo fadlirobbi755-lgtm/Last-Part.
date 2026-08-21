@@ -1,0 +1,10 @@
+data/
+│
+├── story.json
+├── timeline.json
+├── gallery.json
+├── reasons.json
+├── dreams.json
+├── quotes.json
+├── music.json
+└── settings.json
