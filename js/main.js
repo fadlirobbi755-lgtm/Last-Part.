@@ -324,10 +324,10 @@ function loadGalleryImage(number) {
 
 
     const jpgPath =
-        `assets/images/gallery/gallery${photoNumber}.jpg`;
+        `assets/images/gallery/gallery${photoNumber}.JPG`;
 
     const jpegPath =
-        `assets/images/gallery/gallery${photoNumber}.jpeg`;
+        `assets/images/gallery/gallery${photoNumber}.JPEG`;
 
 
     galleryImage.classList.add(
@@ -340,11 +340,11 @@ function loadGalleryImage(number) {
         if (
             galleryImage.src
                 .toLowerCase()
-                .endsWith(".jpg")
+                .endsWith(".JPG")
         ) {
 
             galleryImage.src =
-                jpegPath;
+                JPEGPath;
 
         }
 
