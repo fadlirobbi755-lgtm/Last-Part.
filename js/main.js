@@ -318,38 +318,44 @@ function loadGalleryImage(number) {
         return;
     }
 
-
     const photoNumber =
         String(number).padStart(2, "0");
 
+    const extensions = [
+        ".jpg",
+        ".JPG",
+        ".jpeg",
+        ".JPEG"
+    ];
 
-    const jpgPath =
-        `assets/images/gallery/gallery${photoNumber}.JPG`;
-
-    const jpegPath =
-        `assets/images/gallery/gallery${photoNumber}.JPEG`;
-
+    let extensionIndex = 0;
 
     galleryImage.classList.add(
         "gallery-image-changing"
     );
 
+    function tryLoadImage() {
 
-    galleryImage.onerror = function () {
+        if (extensionIndex >= extensions.length) {
 
-        if (
-            galleryImage.src
-                .toLowerCase()
-                .endsWith(".JPG")
-        ) {
+            console.error(
+                `Gallery image ${photoNumber} tidak ditemukan.`
+            );
 
-            galleryImage.src =
-                JPEGPath;
+            galleryImage.classList.remove(
+                "gallery-image-changing"
+            );
 
+            return;
         }
 
-    };
+        const imagePath =
+            `assets/images/gallery/gallery${photoNumber}${extensions[extensionIndex]}`;
 
+        extensionIndex++;
+
+        galleryImage.src = imagePath;
+    }
 
     galleryImage.onload = function () {
 
@@ -359,9 +365,13 @@ function loadGalleryImage(number) {
 
     };
 
+    galleryImage.onerror = function () {
 
-    galleryImage.src =
-        jpgPath;
+        tryLoadImage();
+
+    };
+
+    tryLoadImage();
 
 
     if (currentPhoto) {
@@ -381,8 +391,6 @@ function loadGalleryImage(number) {
     }
 
 }
-
-
 
 /* ==================================================
    UPDATE GALLERY
